@@ -1,0 +1,78 @@
+{% extends 'base.html' %}<!---->
+
+{% load static %}
+<!---->{% block styles %}
+<link rel="stylesheet" href="{% static '/base.css' %}" />
+{% endblock styles %}
+<!---->
+{%block title %}Create Find Me{%endblock title %}
+<!---->
+{%block content %}
+<!---->
+<div class="section-center">
+
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <!---->
+  <section class="profile-main-section create">
+    <h1>Create</h1>
+  <div class="form">
+    <!---->
+    <div class="create-cv-form-top">
+      <!--name-->
+      {{comments_form.name.label_tag}}
+      <!---->
+      {{comments_form.name}}
+    </div>
+    <div class="form-img">
+      <!--image-->
+      {{comments_form.image.label_tag}}
+      <!---->
+      {{comments_form.image}}
+    </div>
+
+    <div class="create-cv-form-details">
+      <!--age-->
+      {{comments_form.age.label_tag}}
+      <!---->
+      {{comments_form.age}}
+      <!--sex-->
+      {{comments_form.sex.label_tag}}
+      <!---->
+      {{comments_form.sex}}
+      <!--neu-->
+      {{comments_form.neutered.label_tag}}
+      <!---->
+      {{comments_form.neutered}}
+      <!--size-->
+      {{comments_form.size.label_tag}}
+      <!---->
+      {{comments_form.size}}
+    </div>
+    <div class="create-cv-form-body">
+      <!--about me-->
+      {{comments_form.about_me.label_tag}}
+      <!---->
+      {{comments_form.about_me}}
+    </div>
+    <div class="create-cv-form-contact">
+      <!--phone_number-->
+      <div class="optional">
+      {{comments_form.phone_number.label_tag}}
+      <small>* optional</small>
+      </div>
+      <!---->
+      {{comments_form.phone_number}}
+      <!--email-->
+      {{comments_form.email.label_tag}}
+      <!---->
+      {{comments_form.email}}
+    </div>
+    <!---->
+    {% comment %} {{comments_form}} {% endcomment %}
+    <!---->
+    <button class="btn" type="submit">Submit</button>
+  </div>
+</form>
+</div>
+{% endblock content %}

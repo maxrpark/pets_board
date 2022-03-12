@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% load static %} {% block styles %}
+<link rel="stylesheet" href="{% static '/base.css' %}" />
+{% endblock styles %} {% comment %} body {%block title %}Home Page{%endblock
+title %} {% comment %} body {% endcomment %} {%block content %} {% comment %}
+body {% endcomment %} 
+<h2>Latest CVs</h2>
+<p class="subtitle">These are the latest pet's cv, they waiting for a call or a recommendation from you. You can take a look at all the CVs on the   <a class="internal-link" href="/cvs/">CV Page</a>  or create a new CV <a class="internal-link" href="/create-cv/">here.</a></p>
+{% for pet in cvs %} 
+{% include 'app/includes/card.html'%}
+{% endfor %} 
+<h2>Latest Find Me</h2>
+<p class='subtitle'>Find your pet or help someone else to reunite with their beveled one. Take a look at all the posts in the <a class="internal-link" href="/find-me/">Find Me section</a> . Create a Find Me, <a class="internal-link" href="/create-find-me/">here.</a></p>
+{% for pet in findme %} 
+{% include 'app/includes/find_me_snippet.html'%}
+ {% endfor %} 
+ {% endblock content %}
+</span>
+

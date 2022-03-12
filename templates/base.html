@@ -1,0 +1,73 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- reference your installed Font Awesome Free package's files here -->
+    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+    {% block styles %}
+    <link rel="stylesheet" href="{% static '/base.css' %}" />
+    {% endblock styles %}
+    <title>{% block title %}Pets Board{% endblock title %}</title>
+  </head>
+  <body>
+    <nav class="nav-center">
+      <div class="navbar">
+        <a href="/">
+          <h3 class="logo">Pets Board <i class="fa-solid fa-paw"></i></h3>
+        </a>
+        <div class="menu-icon">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+      </div>
+    </nav>
+
+    <div class="main-container">
+      <div class="menu">
+        <div class="links-container">
+          <ul class="links">
+            <!--search-->
+            <form action="{%url 'result'%}">
+              <input
+                placeholder="Search..."
+                class="search-input"
+                name="query"
+                type="text"
+              />
+            </form>
+            <!--end of  search-->
+            <li>
+              <a href="{%url 'cvs'%}">
+                <span>CVs</span>
+                <span>CVs</span>
+              </a>
+            </li>
+            <li>
+              <a href="{%url 'find-me'%}">
+                <span>Find Me</span>
+                <span>Find Me</span>
+              </a>
+            </li>
+            <li>
+              <a href="{%url 'create_cv'%}">
+                <span>Create CV</span>
+                <span>Create CV</span>
+              </a>
+            </li>
+            <li>
+              <a href="{%url 'create_find_me'%}">
+                <span>Create Find Me</span>
+                <span>Create Find Me</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <main>{% block content %}{% endblock content %}</main>
+      <aside class="side-bar">{% include 'app/includes/sidebar.html'%}</aside>
+    </div>
+
+    <script src="{% static '/app.js' %}"></script>
+  </body>
+</html>

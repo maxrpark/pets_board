@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+<!-- -->
+{% load static %}
+<!-- -->
+{% block styles %}
+<link rel="stylesheet" href="{% static '/base.css' %}" />
+<link rel="stylesheet" href="{% static '/app/pet_profile.css' %}" />
+{% endblock styles %}
+<!-- -->
+
+{%block title %}Home Page{%endblock title %}
+
+<!-- content-->
+{% block content %}
+
+<section class="profile-main-section">
+  {% include 'app/includes/social_share.html'%}
+  <!-- profile header-->
+  <div class="profile-header">
+    <div class="main-details">
+      <h1>{{pet.name}}</h1>
+      <div class="single-details">
+        <p>Age: {{pet.age}}</p>
+        <p>Neutered: {{pet.neutered}}</p>
+        <p>Sex: {{pet.sex}}</p>
+        <p>Size: {{pet.size}}</p>
+      </div>
+    </div>
+    <img class="img profile-img" src="{{ pet.image.url }}" />
+  </div>
+  <!-- profile body-->
+  <div class="profile-body">
+    <h2>About Me</h2>
+    <p>{{pet.about_me}}</p>
+    <h2>Skills</h2>
+    <p>{{pet.skills}}</p>
+    <h2>Achivements</h2>
+    <p>{{pet.achievements}}</p>
+    <h2>What I links</h2>
+    <p>{{pet.things_I_like}}</p>
+    <h2>Thins I dont like so much</h2>
+    <p>{{pet.things_Dont_like}}</p>
+    <h2>What I would like to revice</h2>
+    <p>{{pet.desire_compensation}}</p>
+  </div>
+  <div class="contact">
+    <h2>Get in touch</h2>
+    <p>
+      If you would like to know more about me, consider contact my human friend
+    </p>
+    <p>Phone number:{{pet.phone_number}}</p>
+    <p>Email: {{pet.email}}</p>
+  </div>
+  {% include 'app/includes/social_share.html'%}
+</section>
+<!-- comments-->
+{% if comments %}
+<h2>Comments</h2>
+{% for comment in comments %}
+<div class="single-comment">
+  <h3>{{comment.name}}</h3>
+  <p>{{comment.comment}}</p>
+  <p>{{comment.create_at}}</p>
+</div>
+{% endfor %} {% endif %}
+<!-- end of comments-->
+
+<!-- form-->
+<div class="form-comment-section">
+  <h2>Leave a comment</h2>
+  <form
+    class="main-comment-form"
+    action="{%url 'pet_cv' pet.slug%}"
+    method="POST"
+  >
+    {% csrf_token %} {{comments_form}}
+    <button class="btn" type="submit">Submit</button>
+  </form>
+</div>
+<!-- form-->
+{% endblock content %}
+<!-- end of content-->

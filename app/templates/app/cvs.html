@@ -1,0 +1,13 @@
+{% extends 'base.html' %} {% load static %} {% block styles %}
+<link rel="stylesheet" href="{% static '/base.css' %}" />
+{% endblock styles %} {% comment %} body {%block title %}Home Page{%endblock
+title %} {% comment %} body {% endcomment %} {%block content %} {% comment %}
+body {% endcomment %} 
+<H1>All CVs</H1>
+<p class="subtitle">Your new best friend is here waiting for you, <br>  <a class="internal-link" href="/create-cv/">Create a CV</a></p>
+
+{% for pet in pets %} 
+{% include 'app/includes/card.html'%}
+ {% endfor %} 
+ {% endblock content %}
+</span>

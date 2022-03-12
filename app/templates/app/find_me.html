@@ -1,0 +1,12 @@
+{% extends 'base.html' %} {% load static %} {% block styles %}
+<link rel="stylesheet" href="{% static '/base.css' %}" />
+{% endblock styles %} {% comment %} body {%block title %}Home Page{%endblock
+title %} {% comment %} body {% endcomment %} {%block content %} {% comment %}
+body {% endcomment %} 
+<h2>Find Me</h2>
+<p class="subtitle">Find or help someone to find their pet, <br>  <a class="internal-link" href="/create-find-me/">Create a Find Me</a></p>
+{% for pet in pets %} 
+{% include 'app/includes/find_me_snippet.html'%}
+ {% endfor %} 
+ {% endblock content %}
+</span>

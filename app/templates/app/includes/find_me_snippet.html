@@ -1,0 +1,33 @@
+<div class="card">
+  <div class="card-center">
+    <div class="img-container">
+      <img class="img card-img" src="{{ pet.image.url }}" />
+    </div>
+    <div class="card-body">
+      <h3>{{pet.name}}</h3>
+
+      <div class="characteristics">
+        <a
+          class="characteristic-link"
+          href="{%url 'results' 'findme' pet.sex %}"
+          >{{pet.sex}}</a
+        >
+        <a
+          class="characteristic-link"
+          href="{%url 'results' 'findme' pet.size %}"
+          >{{pet.size}}</a
+        >
+        {% if pet.neutered == 'yes' %}
+        <a
+          class="characteristic-link"
+          href="{%url 'results' 'findme' pet.neutered %}"
+          >Neutered</a
+        >
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <a class="card-read-more" href="{%url 'find-me-pet' pet.slug %}"
+    >Read About me</a
+  >
+</div>

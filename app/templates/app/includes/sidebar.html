@@ -1,0 +1,21 @@
+{% load static %} {% block styles %}<link
+  rel="stylesheet"
+  href="{% static 'base.css' %}"
+/>
+{% endblock styles %}
+<!--cvs -->
+<h3>Latest CVs</h3>
+{% for pet in cvs %}
+<a class="sidebar-item" href="{%url 'pet_cv' pet.slug %}">
+  <img class="img" src="{{ pet.image.url }}" />
+  <h3>{{pet.name}}</h3>
+</a>
+{% endfor %}
+<!--cvs -->
+<h3>Latest Find Me</h3>
+{% for pet in findme %}
+<a class="sidebar-item" href="{%url 'find-me-pet' pet.slug %}">
+  <img class="img" src="{{ pet.image.url }}" />
+  <h3>{{pet.name}}</h3>
+</a>
+{% endfor %}
