@@ -1,9 +1,7 @@
 {% extends 'base.html' %} {% load static %} {% block styles %}
 <link rel="stylesheet" href="{% static '/base.css' %}" />
 {% endblock styles %} {% comment %} body {%block title %}Home Page{%endblock
-title %} {% comment %} body {% endcomment %} {%block content %} 
-
-{% comment %}
+title %} {% comment %} body {% endcomment %} {%block content %} {% comment %}
 body {% endcomment %}
 <!--search-->
 {% if cvs_result %}
@@ -39,16 +37,19 @@ body {% endcomment %}
 <!--end of content block-->
 
 {% if not findme_result and not cvs_result %}
-<h2>No matches</h2>
-<!--search-->
-<form action="{%url 'result'%}">
-  <input
-    placeholder="Search..."
-    class="search-input"
-    name="query"
-    type="text"
-  />
-</form>
+<section class="no-result">
+  <h2>No matches</h2>
+  <!--search-->
+  <form class="result-form" action="{%url 'result'%}">
+    <input
+      placeholder="Search..."
+      class="search-input"
+      name="query"
+      type="text"
+    />
+  </form>
+  <a href="/" class="btn">Back Home</a>
+</section>
 {% endif %}
 <!--end of  search-->
 {% endblock content %}

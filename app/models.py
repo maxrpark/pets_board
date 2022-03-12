@@ -42,7 +42,7 @@ class Pet(models.Model):
     )
 
     name = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='pets_cv/', null=True)
+    image = models.ImageField(upload_to='pet_board/', null=True)
     age = models.CharField(max_length=50)
     sex = models.CharField(
         max_length=10, choices=CHOICES_SEX, default=NO)
@@ -75,7 +75,7 @@ class Pet_CV_Comments(models.Model):
     pet_cv = models.ForeignKey(
         Pet, related_name='comments', on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
-    email = models.EmailField(max_length=100)
+    title = models.CharField(max_length=100, default='')
     comment = models.TextField(max_length=250)
     create_at = models.DateTimeField(auto_now_add=True, editable=True)
 
@@ -115,7 +115,7 @@ class FindMe(models.Model):
     )
 
     name = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='pets_find_me/', null=True)
+    image = models.ImageField(upload_to='pet_board/', null=True)
     age = models.CharField(max_length=50)
     sex = models.CharField(
         max_length=10, choices=CHOICES_SEX, default=NO)
@@ -147,8 +147,8 @@ class Find_Me_Comments(models.Model):
     pet_find_me = models.ForeignKey(
         FindMe, related_name='comments', on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
-    email = models.EmailField(max_length=100)
-    comment = models.TextField(max_length=250)
+    title = models.CharField(max_length=100, default='')
+    comment = models.TextField(max_length=250, )
     create_at = models.DateTimeField(auto_now_add=True, editable=True)
 
     def __str__(self):
