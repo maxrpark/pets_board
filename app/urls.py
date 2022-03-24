@@ -13,5 +13,5 @@ urlpatterns = [
     path('results/<str:section>/<str:slug>/',
          views.showResults.as_view(), name='results'),
     path('results/',
-         views.showResults.as_view(), name='result'),
+         views.SearchResult.as_view(), name='result'),
 ]

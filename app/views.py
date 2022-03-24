@@ -155,6 +155,8 @@ class showResults(View):
                        "section": section, "query": slug}
         return render(request, 'app/results.html', context)
 
+
+class SearchResult(View):
     def get(self, request):
         query = request.GET.get('query', '')
         pets = Pet.objects.all()
